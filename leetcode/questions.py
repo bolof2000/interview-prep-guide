@@ -1030,24 +1030,57 @@ class Solutions:
         pass
 
     def validate_ip4(self, ipaddress):
-        nums = ipaddress.split('.')
-        for x in nums:
-            if len(x) == 0 or len(x) > 3:
-                return None
-
-        if x[0] == '0' and len(x) != 1 or not x.isdigit() or int(x) > 255:
-            return None
-        return "ipv4"
+      pass 
+       
 
     def validate_ip4(self, ipaddres):
-        nums = ipaddres.split(':')
-        format_address = "0123456789abcdefABCDF"
+      pass 
+  
 
-        for x in nums:
-            if l(x) == 0 or len(x) > 4 or not all(y in format_address for y in x):
-                return None
+def minCost(cost,s):
+  result = 0 
+  pre= 0 
+  for i in range(1,len(s)):
+    if s[pre] != s[i]:
+      pre = i 
 
-        return "ipv6"
+    else:
+
+      result += max(cost[pre],cost[i])
+      if cost[pre] < cost[i]:
+        pre = i 
+  return result
+
+
+def numIslands(grid):
+  if(grid == None or len(grid)==0):
+    return 0 
+  count =0
+  for row in range(len(grid)):
+    for col in range(len(grid[0])):
+      if grid[row][col] == "1":
+        count +=1
+        dfs(grid,row,col)
+
+  return count 
+
+def dfs(grid,row,col):
+  if row <0 or row>= len(grid) or col <0 or col >=len(grid[0]) or grid[row][col] == "0":
+    return
+  grid[row][col] = "0"
+  dfs(grid,row+1,col)
+  dfs(grid,row-1,col)
+  dfs(grid,row,col+1)
+  dfs(grid,row,col-1)
+
+    
+  
+
+
+
+        
+
+      
 
 
 
