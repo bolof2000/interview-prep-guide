@@ -1073,6 +1073,33 @@ def dfs(grid,row,col):
   dfs(grid,row,col+1)
   dfs(grid,row,col-1)
 
+class MSTInterviewPrepSolutions(object):
+
+  def maxLength(self,arr):
+
+    n = len(arr)
+    result = 0
+
+    def hasDuplicate(s):
+      return len(s) != len(set(s))
+
+    def backtrack(current_string,index):
+      nonlocal result
+      result = max(result, len(current_string))
+      for i in range(index,n):
+        new_str = current_string+arr[i]
+        if not hasDuplicate(new_str):
+          backtrack(new_str,i+1)
+
+    backtrack("",0)
+
+    return result
+
+
+  def spiralMatrix(self,grid):
+    
+
+
     
   
 
