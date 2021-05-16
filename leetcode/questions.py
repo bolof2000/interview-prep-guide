@@ -1104,31 +1104,88 @@ class MSTInterviewPrepSolutions(object):
     right = len(matrix[0])-1
     direction = "right"
     result = []
+    if not matrix:
+      return result 
 
     while top <= bottom and left <= right:
       if direction == "right":
-        for i in range(right,left+1):
+        for i in range(left,right+1):
           result.append(matrix[top][i])
         top +=1
         direction = "down"
-      elif direction = "down":
-        for i in range(top,bottom-1,-1):
-          result.append(matrix[right][i])
+      elif direction == "down":
+        for i in range(top,bottom+1):
+          result.append(matrix[i][right])
         right -=1
         direction = "left"
       elif direction == "left":
-        for i in range(left,right-1,-1):
+        for i in range(right,left-1,-1):
           result.append(matrix[bottom][i])
         bottom -=1
         direction = "up"
       
       elif direction == "up":
         for i in range(bottom,top-1,-1):
-          result.append(matrix[left][i])
-        left +=1
+          result.append(matrix[i][left])
+        left -=1
         direction = "right"
 
     return result 
+
+
+    def firstMissingPositive(self,nums):
+
+        """
+      :type nums: List[int]
+      :rtype: int
+      Basic idea:
+      1. for any array whose length is l, the first missing positive must be in range [1,...,l+1], 
+          so we only have to care about those elements in this range and remove the rest.
+      2. we can use the array index as the hash to restore the frequency of each number within 
+          the range [1,...,l+1] 
+      """
+
+      nums.append(0)  
+      n = len(nums)
+      for i in range(len(nums)):
+        num = nums[i]
+        if num <0 or num >= n:
+          num = 0   # delete those useless elements
+      
+      for i in range(len(nums)):
+        x = nums[i]%n   # use the index as the has to record the freq of each number 
+        nums[x] += n
+
+      for i in range(1,len(nums)):
+        num = nums[i]
+        if num/n ==0:
+          return i 
+
+      return n
+      
+
+  def maxNetworkRank(n,roads):
+
+    adj =[0]*n+1
+
+    for a,b in road:
+      adj[a] +=1
+      adj[b] +=1
+
+      max_rank =0 
+
+      for a,b in roads:
+        max_rank = max(max_rank,adj[a]+adj[b]-1)
+    return max_rank 
+
+
+
+
+     
+
+
+        
+
 
 
 
