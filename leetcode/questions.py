@@ -1164,7 +1164,7 @@ class MSTInterviewPrepSolutions(object):
       return n
       
 
-  def maxNetworkRank(n,roads):
+  def maxNetworkRank(self,n,roads):
 
     adj =[0]*n+1
 
@@ -1177,6 +1177,28 @@ class MSTInterviewPrepSolutions(object):
       for a,b in roads:
         max_rank = max(max_rank,adj[a]+adj[b]-1)
     return max_rank 
+
+  def maxNetworkRank2(self,n,roads):
+
+    adjacent_list = {}
+
+    for vertex in range(n):
+      adjacent_list[vertex] = []
+    
+    for sub in roads:
+      v1 = sub[0]
+      v2 = sub[1]
+      adjacent_list[v1].append(v2)
+      adjacent_list[v2].append(v1)
+
+
+    max_so_far =0
+    for i in range(n):
+      for j in range(i+1,n):
+        max_so_far= max(max_so_far,len(connected[i])+len(connected[j])-(i in connected[j]))
+    
+    return max_so_far
+
 
 
 
