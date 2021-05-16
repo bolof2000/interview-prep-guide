@@ -1216,6 +1216,54 @@ class MSTInterviewPrepSolutions(object):
 
     return dummy.next 
 
+  
+  def maxLength2(self,arr): 
+
+    result = 0
+    def dfs(current_str,index):
+
+      nonlocal result 
+
+      result = max(result,len(current_str))
+
+      for i in range(index,len(arr)):
+        new_str = current_str+arr[i]
+
+        if not hasDup(new_str):
+          dfs(new_str,i+1)
+
+
+    dfs("",0)
+    return result 
+
+
+class QueueUsingStack():
+
+  def __init__(self):
+    self.stack1 = []
+    self.stack2 = []
+  
+  def push(self,x):
+    self.stack1.append(x)
+
+  def pop(self): 
+
+    # fill the stack2 first and then pop the top 
+    self.peek()
+    return self.stack2.pop()
+
+  def peek(self):
+    if not self.stack2:
+      while self.stack1:
+        self.stack2.append(self.stack1.pop())
+    
+
+    return self.stack2[-1]
+
+
+  
+
+
 
    
 
