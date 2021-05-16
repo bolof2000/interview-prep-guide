@@ -1200,6 +1200,28 @@ class MSTInterviewPrepSolutions(object):
     
     return max_so_far
 
+  def mergeKLists(lists:List[ListNode])-> ListNode: 
+
+    dummy = ListNode(0)
+    output = dummy
+    queue = []
+    for head in lists:
+      while head is not None:
+        heappush(queue,head.val)
+        head = head.next 
+
+    while len(queue) > 0:
+      output.next = ListNode(heappop(queue))
+      output = output.next 
+
+    return dummy.next 
+
+
+   
+
+    
+    
+
 
 
 
