@@ -1146,23 +1146,23 @@ class MSTInterviewPrepSolutions(object):
           the range [1,...,l+1] 
       """
 
-      nums.append(0)  
-      n = len(nums)
-      for i in range(len(nums)):
-        num = nums[i]
-        if num <0 or num >= n:
-          num = 0   # delete those useless elements
-      
-      for i in range(len(nums)):
-        x = nums[i]%n   # use the index as the has to record the freq of each number 
-        nums[x] += n
 
-      for i in range(1,len(nums)):
-        num = nums[i]
-        if num/n ==0:
-          return i 
+        n = len(nums)
+        for i in range(len(nums)):
+          num = nums[i]
+          if num <0 or num >= n:
+            num = 0   # delete those useless elements
+        
+        for i in range(len(nums)):
+          x = nums[i]%n   # use the index as the has to record the freq of each number 
+          nums[x] += n
 
-      return n
+        for i in range(1,len(nums)):
+          num = nums[i]
+          if num/n ==0:
+            return i 
+
+        return n
       
 
   def maxNetworkRank(self,n,roads):
@@ -1235,6 +1235,33 @@ class MSTInterviewPrepSolutions(object):
 
     dfs("",0)
     return result 
+  
+
+  # solution not clear 
+  def modifyString(self, s: str) -> str:
+        s = list(s)
+        for i in range(len(s)):
+            if s[i] == "?": 
+                for c in "abc": 
+                    if (i == 0 or s[i-1] != c) and (i+1 == len(s) or s[i+1] != c): 
+                        s[i] = c
+                        break 
+        return "".join(s)
+
+def reverseWords(s:str)->int:
+
+  result = []
+  str_new = s.split(" ")
+  print(str_new)
+  
+  for i in range(len(str_new)-1,-1,-1):
+    word = str_new[i]
+    if len(word) >0:
+      result.append(word)
+  
+  return " ".join(result)
+
+
 
 
 class QueueUsingStack():
@@ -1259,6 +1286,70 @@ class QueueUsingStack():
     
 
     return self.stack2[-1]
+
+class Queue(object):
+
+  def __init__(self):
+    self.queue = []
+
+  def isEmpty(self):
+    return len(self.queue) == 0
+  
+  def enqueue(self,item):
+    self.queue.insert(0,item) # add to the front
+  
+  def dequeue(self):
+    return self.queue.pop()
+
+  def size(self):
+    return len(self.queue)
+
+
+def partitionDisjoint(nums):
+  n = len(nums)
+  maxleft = [None]*n
+  minright = [None]*n
+  m = nums[0]
+  for i in range(n):
+    m = max(m,nums[i])
+    maxleft[i] = m 
+  
+
+  m = nums[-1]
+  for i in range(n-1,-1,-1):
+    m = min(m,nums[i])
+    minright[i]  = m 
+
+  for i in range(1,n):
+    if maxleft[i-1] <= minright[i]:
+      return i 
+
+def reverseWords2(s):
+
+  def reverse_word_helper(left,right):
+    while left < right:
+      s[left],s[right] =s[right],s[right]
+      left +=1
+      right -=1
+
+    reverse_word_helper(0,len(s)-1)
+
+  left =0 
+  for i,char in enumerate(s):
+    if char == " ":
+      reverse_word_helper(left,i-1)
+      left +=1 
+    reverse_word_helper(left,len(s)-1)
+
+
+
+
+  print(reverseWords("the sky is blue"))
+
+  
+  
+    
+
 
 
   
