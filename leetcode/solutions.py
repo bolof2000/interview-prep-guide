@@ -1,3 +1,5 @@
+from typing import List
+
 from listnode import ListNode
 from collections import defaultdict
 import pdb
@@ -164,76 +166,76 @@ class Solutions:
             else:
                 mapp[char] = 1
         print(mapp)
-        for i,char in enumerate(s):
-            if mapp.get(char) ==1:
+        for i, char in enumerate(s):
+            if mapp.get(char) == 1:
                 return i
 
         return -1
 
 
 def reverseWords(s):
-  
-  def reverse_helper(left,right):
-    while left < right:
-      s[left],s[right] = s[right],s[left]
-      left +=1
-      right -=1
-    
-  reverse_helper(0,len(s)-1)
+    def reverse_helper(left, right):
+        while left < right:
+            s[left], s[right] = s[right], s[left]
+            left += 1
+            right -= 1
 
-  left =0 
-  for i,char in enumerate(s):
-    if char == " ":
-      reverse_helper(left,i-1)
-      left = i+1
-  reverse_helper(left,len(s)-1)
+    reverse_helper(0, len(s) - 1)
 
-  def longestPalindrome2(s): 
-    result = ""
+    left = 0
+    for i, char in enumerate(s):
+        if char == " ":
+            reverse_helper(left, i - 1)
+            left = i + 1
+    reverse_helper(left, len(s) - 1)
 
-    for i in range(s):
-      current = expand(s,i-1,i+1)
-      in_btw = expand(s,i,i+1)
-      result = max(result,current,in_btw,key=len)
+    def longestPalindrome2(s):
+        result = ""
 
-    return result 
+        for i in range(s):
+            current = expand(s, i - 1, i + 1)
+            in_btw = expand(s, i, i + 1)
+            result = max(result, current, in_btw, key=len)
 
-  def expand(s,left,right):
-    while left >=0 and right < len(s) and s[left]== s[right]:
-      left -=1
-      right +=1
-    
-    return s[left+1:right]
-  def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        return result
+
+    def expand(s, left, right):
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+
+        return s[left + 1:right]
+
+    def merge(self, nums1, m, nums2, n):
+        # def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-     
-        index = m+n-1
-        while m >0 and n > 0:
-            if nums1[m-1] > nums2[n-1]:
-                nums1[index] = nums1[m-1]
-                m -=1
+
+        index = m + n - 1
+        while m > 0 and n > 0:
+            if nums1[m - 1] > nums2[n - 1]:
+                nums1[index] = nums1[m - 1]
+                m -= 1
             else:
-                nums1[index] = nums2[n-1]
-                
-                n -=1
-            
-            index -=1
-        
-        while n >0:
-            nums1[index] = nums2[n-1]
-            n -=1
-            index -=1
+                nums1[index] = nums2[n - 1]
 
-  def lowestCommonAncestor(root,p,q):
-    if not root:
-      return None 
+                n -= 1
 
-    left_res = lowestCommonAncestor(root.left,p,q)
-    right_res = lowestCommonAncestor(root.right,p,q)
-    if (left_res and right_res) or (root in [p,q]):
-      return root 
-    else:
-      return left_res or right_res 
-        
+            index -= 1
+
+        while n > 0:
+            nums1[index] = nums2[n - 1]
+            n -= 1
+            index -= 1
+
+    def lowestCommonAncestor(root, p, q):
+        if not root:
+            return None
+
+        left_res = lowestCommonAncestor(root.left, p, q)
+        right_res = lowestCommonAncestor(root.right, p, q)
+        if (left_res and right_res) or (root in [p, q]):
+            return root
+        else:
+            return left_res or right_res

@@ -1169,7 +1169,7 @@ class MSTInterviewPrepSolutions(object):
 
     adj =[0]*n+1
 
-    for a,b in road:
+    for a,b in roads:
       adj[a] +=1
       adj[b] +=1
 
@@ -1196,7 +1196,7 @@ class MSTInterviewPrepSolutions(object):
     max_so_far =0
     for i in range(n):
       for j in range(i+1,n):
-        max_so_far= max(max_so_far,len(connected[i])+len(connected[j])-(i in connected[j]))
+        max_so_far= max(max_so_far,len(adjacent_list[i])+len(adjacent_list[j])-(i in adjacent_list[j]))
     
     return max_so_far
 
@@ -1220,11 +1220,13 @@ class MSTInterviewPrepSolutions(object):
   def maxLength2(self,arr): 
 
     result = 0
+    def hasDup(s):
+        return len(s) != len(set(s))
     def dfs(current_str,index):
 
-      nonlocal result 
+     # nonlocal result
 
-      result = max(result,len(current_str))
+      #result = max(result,len(current_str))
 
       for i in range(index,len(arr)):
         new_str = current_str+arr[i]
@@ -1338,13 +1340,8 @@ def reverseWords2(s):
   for i,char in enumerate(s):
     if char == " ":
       reverse_word_helper(left,i-1)
-      left +=1 
+      left = i+1
     reverse_word_helper(left,len(s)-1)
-
-
-
-
-  print(reverseWords("the sky is blue"))
 
   
   
