@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "repl_python3_interview-prep-guide-3"
+version = "0.1.0"
+description = ""
+authors = ["bolof2000 <<>>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+configparser = "^5.0.2"
+pytest = "^6.2.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
