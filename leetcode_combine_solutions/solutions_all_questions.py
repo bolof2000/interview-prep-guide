@@ -143,6 +143,7 @@ class Solutions:
         return dp.pop()
 
     def removeElements(self,head:ListNode,val:int)-> ListNode:
+        pass
 
 
 test = Solutions()
