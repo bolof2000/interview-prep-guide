@@ -37,7 +37,7 @@ class Solutions:
                             left += 1
 
                         while left < right and nums[right] == nums[right - 1]:
-                            left -= 1
+                            right -=1
 
                         left += 1
                         right -= 1
@@ -1343,13 +1343,7 @@ def reverseWords2(s):
       left = i+1
     reverse_word_helper(left,len(s)-1)
 
-  
-  
-    
 
-
-
-  
 
 
 

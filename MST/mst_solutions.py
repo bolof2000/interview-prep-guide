@@ -264,10 +264,3 @@ def combination_sum(candidates,target):
     return res
 
 
-
-
-def reverselist(head: ListNode) -> ListNode:
-    pass
-
-
-print(subarraySum([1, 1, 1], 2))

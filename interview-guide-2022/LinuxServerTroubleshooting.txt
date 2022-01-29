@@ -1,0 +1,51 @@
+Common Issues:
+
+Storage Issues
+High CPU/Memory Usage
+Logs Issues
+Monitoring and Alerting
+
+
+Disk partition is full - Find and delete huge files
+
+df -h
+
+du -sh * to see the files by size in the current directory
+
+    ----
+
+Find File and directory -- Grep error frm log file
+Compare two files content
+find / -name filename --- find a file
+grep error logfileName - search for key word error in a file
+grep error * all files
+
+
+Compare two files
+diff file1 file2
+
+
+check CPU and RAM usages - High Memory
+
+htop
+top
+free -m  check ram
+sar 1 3
+vmstat
+iostat
+
+
+Debugging network related issues
+dmesg = network interfaces
+
+SSH login related issues
+
+Kill Process forcefully
+ps -ef | grep httpd
+kill -9 pid
+
+if a process is taking a higher priority , we can renice the process and set a lower proirity to it
+priority value range from 1 to 19 with 19 being the lowest
+
+Steps to debug a websever:
+check the processes running- what is consuming the most memory/cpu
