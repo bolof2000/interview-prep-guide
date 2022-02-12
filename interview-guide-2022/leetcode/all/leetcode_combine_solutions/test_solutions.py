@@ -1,5 +1,5 @@
 import pytest
-from leetcode_combine_solutions.solutions_all_questions import Solutions
+from leetcode.leetcode_combine_solutions.solutions_all_questions import Solutions
 
 data = [
     ([1, 2, 3, 4], [24, 12, 8, 6]),

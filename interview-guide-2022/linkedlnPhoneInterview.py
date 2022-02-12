@@ -104,7 +104,7 @@ class Solutions(object):
 
     def fileDirectory(self):
 
-        for directoryPath, dirNames, fileNames in os.walk('/Volumes/dev-env/interview-prep-guide'):
+        for directoryPath, dirNames, fileNames in os.walk('/'):
             print(
                 f"Root:{directoryPath}\n"
                 f"Sub-directories:{dirNames}\n"

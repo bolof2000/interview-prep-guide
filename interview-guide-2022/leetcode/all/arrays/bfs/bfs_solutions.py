@@ -1,5 +1,3 @@
-from leetcode.tree import Node
-
 from collections import deque
 
 

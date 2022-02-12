@@ -1,5 +1,3 @@
-from leetcode.tree import Node
-
 from math import inf
 class DFSSolutions:
     """
